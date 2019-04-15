@@ -11,8 +11,6 @@ namespace billetSystemApi.Controllers
     [ApiController]
     public class BestillingsController : ControllerBase
     {
-
-        //lalala
         // GET: api/Bestillings
         [HttpGet]
         public IEnumerable<string> Get()

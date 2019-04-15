@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BilletLibrary;
+using billetSystemApi.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +22,33 @@ namespace billetSystemApi.Controllers
 
         // GET: api/Oresund/5
         [HttpGet("{id}", Name = "GetO")]
-        public string Get(int id)
+        public KoretojDTO Get(int id)
         {
-            return "value";
+            KoretojDTO mitKoretoj = new KoretojDTO();
+
+            if(id == 1)
+            {
+                MCØresund minMCØresund = new MCØresund();
+                mitKoretoj.pris = minMCØresund.Pris();
+                mitKoretoj.type = minMCØresund.KøreTøjType();
+
+                return mitKoretoj;
+            }
+            if(id == 2)
+            {
+                BilØreSund minBilØresund = new BilØreSund();
+                mitKoretoj.pris = minBilØresund.Pris();
+                mitKoretoj.type = minBilØresund.KøreTøjType();
+
+                return mitKoretoj;
+            }
+            else
+            {
+                //BilØreSund minBilØresund = new BilØreSund();
+                //mitKoretoj.pris = minBilØresund.Pris();
+                //mitKoretoj.type = minBilØresund.KøreTøjType();
+                return mitKoretoj;
+            }
         }
 
         // POST: api/Oresund
